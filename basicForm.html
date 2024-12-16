@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to display the pop-up on page load
+        window.onload = function () {
+            alert("Welcome! Please log in to continue.");
+        };
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent page refresh
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (name && email) {
+                alert(`Hi ${name}, thank you for logging in from ${email}`);
+                document.getElementById('redirectBtn').style.display = 'block';
+            } else {
+                alert('Please fill out both fields.');
+            }
+        }
+
+        function redirectToPage() {
+            window.location.href = "https://example.com"; // Change this to your desired URL
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm" onsubmit="handleSubmit(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <button type="submit">Submit</button>
+        </form>
+        <button id="redirectBtn" onclick="redirectToPage()" style="display: none;">Go to the Page</button>
+    </div>
+</body>
+</html>
